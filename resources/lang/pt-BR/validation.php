@@ -127,6 +127,11 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'value' => [
+            'required' => 'Você precisa informar um valor',
+            'numeric' => 'Somente números são aceitos',
+            'min' => 'O valor do depósito precisa ser maior que 0',
+        ],
     ],
 
     /*

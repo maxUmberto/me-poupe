@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 $this->get('amount', 'BalanceController@amountDetails')->name('amount-details');
+
+$this->get('amount/deposit', 'BalanceController@amountDeposit')->name('amount-deposit');
+$this->post('amount/deposit/store', 'BalanceController@amountStore')->name('deposit-store');

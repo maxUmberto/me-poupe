@@ -9,7 +9,7 @@
 @section('content')
     <div class="small-box bg-green">
         <div class="inner">
-            <h3><sup style="font-size: 20px">R$</sup>0,00</h3>
+            <h3><sup style="font-size: 20px">R$</sup>{{ number_format($amount, '2', ',', '.') }}</h3>
 
             <p>Saldo Total</p>
         </div>

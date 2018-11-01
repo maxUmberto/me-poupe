@@ -8,8 +8,9 @@
 
 @section('content')
   <div class="box">
+    @include('site.includes.app')
     <div class="box-header">
-      <a href="" class="btn btn-success">Depositar <i class="fa fa-arrow-circle-o-up"></i></a>
+      <a href="{{ route('amount-deposit') }}" class="btn btn-success">Depositar <i class="fa fa-arrow-circle-o-up"></i></a>
       <a href="" class="btn btn-danger">Sacar <i class="fa fa-arrow-circle-o-down"></i></a>
     </div>
     <div class="box-body">
@@ -17,7 +18,7 @@
         <div class="col-md-6">
           <div class="small-box bg-green">
             <div class="inner">
-              <h3><sup style="font-size: 20px">R$</sup>0,00</h3>
+              <h3><sup style="font-size: 20px">R$</sup>{{ number_format($amount, '2', ',', '.') }}</h3>
 
               <p>Saldo Total</p>
             </div>

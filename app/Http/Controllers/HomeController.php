@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $balance = auth()->user()->balance;
+
+      $amount = $balance ? $balance->amount : 0;
+        return view('home', compact('amount'));
     }
 }
