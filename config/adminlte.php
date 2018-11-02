@@ -109,9 +109,9 @@ return [
 
     'menu' => [
         [
-          'text'        => 'Dashboard',
+          'text'        => 'Início',
           'url'         => '/home',
-          'icon'        => 'dashboard',
+          'icon'        => 'home',
         ],
         [
           'text'        => 'Perfil',

@@ -20,6 +20,14 @@ class Balance extends Model
       //Salva no banco de dados
       $deposit = $this->save();
 
+      /*$historic = auth()->user()->historics()->create(
+        [
+          'type' => 'I',
+          'amount' => $value,
+          '$total'
+        ]
+      );*/
+
       if($deposit){
         DB::commit();
         return [
@@ -34,5 +42,27 @@ class Balance extends Model
         ];
       }
 
+    }
+
+    public function withdraw($value){
+      DB::beginTransaction();
+
+      $this->amount -= intval($value);
+
+      $withdraw = $this->save();
+
+      if($withdraw){
+        DB::commit();
+        return [
+          'success' => true,
+          'message' => 'Saque realizado com sucesso'
+        ];
+      }else{
+        DB::rollback();
+        return [
+          'success' => false,
+          'message' => 'Falha ao fazer o saque, tente novamente'
+        ];
+      }
     }
 }

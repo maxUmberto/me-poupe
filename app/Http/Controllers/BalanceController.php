@@ -9,23 +9,22 @@ use App\Models\Balance;
 
 class BalanceController extends Controller
 {
-    public function amountDetails(){
+    private function amount(){
       $balance = auth()->user()->balance;
 
-      $amount = $balance ? $balance->amount : 0;
+      return  $balance ? $balance->amount : 0;
+    }
 
-      return view('site.saldo.amount-details', compact('amount'));
+    public function amountDetails(){
+      return view('site.saldo.amount-details')->with('amount', $this->amount());
     }
 
     public function amountDeposit(){
-      $balance = auth()->user()->balance;
 
-      $amount = $balance ? $balance->amount : 0;
-
-      return view('site.saldo.amount-deposit', compact('amount'));
+      return view('site.saldo.amount-deposit')->with('amount', $this->amount());
     }
 
-    public function amountStore(MoneyFormValidation $request){
+    public function depositStore(MoneyFormValidation $request){
       $balance = auth()->user()->balance()->firstOrCreate([]);
 
       $response = $balance->deposit($request->value);
@@ -38,5 +37,31 @@ class BalanceController extends Controller
       return redirect()
         ->back()
         ->with('error', $response['message']);
+    }
+
+    public function amountWithdraw(){
+      return view('site.saldo.amount-withdraw')->with('amount', $this->amount());
+    }
+
+    public function withdrawStore(MoneyFormValidation $request){
+      if($request->value > $this->amount()){
+        return redirect()
+          ->back()
+          ->with('error', 'Você não possui saldo suficiente para esse saque');
+      }
+
+      $balance = auth()->user()->balance()->firstOrCreate([]);
+
+      $response = $balance->withdraw($request->value);
+
+      if($response['success'])
+        return redirect()
+          ->route('amount-details')
+          ->with('success', $response['message']);
+
+      return redirect()
+        ->back()
+        ->with('error', $response['message']);
+
     }
 }
