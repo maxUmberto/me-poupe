@@ -21,7 +21,8 @@ class CreateHistoricsTable extends Migration
             $table->double('amount', 10, 2);
             $table->double('amount_before', 10, 2);
             $table->double('amount_after', 10, 2);
-            $table->dateTime('datetime');
+            $table->date('date');
+            $table->time('time');
             $table->timestamps();
         });
     }

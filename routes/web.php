@@ -32,3 +32,4 @@ $this->post('amount/withdraw/store', 'BalanceController@withdrawStore')->name('w
 
 //Rota para ver o histórico
 $this->get('historic', 'HistoricController@historic');
+$this->post('historic/search', 'HistoricController@search')->name('search');
