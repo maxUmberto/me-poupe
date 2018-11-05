@@ -132,6 +132,15 @@ return [
             'numeric' => 'Somente números são aceitos',
             'min' => 'O valor do depósito precisa ser maior que 0',
         ],
+        'category-name' => [
+          'required' => 'A categoria precisa de um nome',
+          'alpha_num' => 'O nome da categoria aceita somente números e letras'
+        ],
+        'objective' => [
+          'required' => 'Você precisa informar um valor',
+          'numeric' => 'Somente números são aceitos',
+          'min' => 'O valor do objetivo precisa ser maior que 0',
+        ],
     ],
 
     /*

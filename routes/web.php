@@ -33,3 +33,9 @@ $this->post('amount/withdraw/store', 'BalanceController@withdrawStore')->name('w
 //Rota para ver o histórico
 $this->get('historic', 'HistoricController@historic');
 $this->post('historic/search', 'HistoricController@search')->name('search');
+
+//Rota para categorias
+$this->get('categories', 'CategoryController@index');
+$this->get('categories/add', 'CategoryController@addCategory')->name('add-category');
+$this->post('categories/add/store', 'CategoryController@categoryStore')->name('category-store');
+$this->get('categories/edit/{id}', 'CategoryController@categoryEdit')->name('category-edit');

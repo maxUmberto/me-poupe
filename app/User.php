@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Category;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -36,5 +37,9 @@ class User extends Authenticatable
 
     public function historics(){
       return $this->hasMany(Historic::class);
+    }
+
+    public function categories(){
+      return $this->hasMany(Category::class);
     }
 }
