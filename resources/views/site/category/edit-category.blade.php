@@ -13,7 +13,7 @@
       @include('site.includes.app')
     </div>
     <div class="box-body">
-      <form method="post" action="{{ route('category-store') }}">
+      <form method="post" action="{{ route('edit-store', ['id' => $id]) }}">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="name">Nome: </label>
@@ -25,7 +25,8 @@
           <input type="text" name="objective" class="form-control" placeholder="R$">
         </div>
         -->
-        <button type="submit" class="btn btn-primary">Editar Categoria</button>
+        <button type="submit" class="btn btn-primary">Editar <i class="fa fa-edit"></i></button>
+        <a href="{{ route('category-delete', ['id' => auth()->id()]) }}" class="btn btn-danger">Excluir <i class="fa fa-trash"></i></a>
       </form>
     </div>
   </div>

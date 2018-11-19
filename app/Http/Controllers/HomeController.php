@@ -16,6 +16,8 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    private $totalPage = 6;
+
     /**
      * Show the application dashboard.
      *
@@ -24,8 +26,9 @@ class HomeController extends Controller
     public function index()
     {
       $balance = auth()->user()->balance;
+      $categories = auth()->user()->categories()->orderByRaw('created_at DESC')->limit(6)->get();
 
       $amount = $balance ? $balance->amount : 0;
-        return view('home', compact('amount'));
+        return view('home', compact('amount', 'categories'));
     }
 }

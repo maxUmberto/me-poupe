@@ -28,7 +28,7 @@
             <div class="icon">
               <i class="{{ $category->symbol }}"></i>
             </div>
-            <a href="{{ route('category-edit', ['id' => $category->id]) }}" class="small-box-footer">Editar <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('category-detail', ['id' => $category->id]) }}" class="small-box-footer">Mais informações <i class="fa arrow-circle-right"></i></a>
 
           </div>
         </div>

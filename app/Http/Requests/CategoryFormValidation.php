@@ -24,7 +24,7 @@ class CategoryFormValidation extends FormRequest
   public function rules()
   {
     return [
-      'category-name' => 'required|alpha_num',
+      'category-name' => 'required|regex:/^[a-zA-Z0-9\s]+$/',
       //'objective' => 'required|numeric|min:1',
     ];
   }

@@ -38,4 +38,19 @@ $this->post('historic/search', 'HistoricController@search')->name('search');
 $this->get('categories', 'CategoryController@index');
 $this->get('categories/add', 'CategoryController@addCategory')->name('add-category');
 $this->post('categories/add/store', 'CategoryController@categoryStore')->name('category-store');
+$this->get('categories/detail/{id}', 'CategoryController@categoryDetail')->name('category-detail');
+
+//Rota para editar categorias
 $this->get('categories/edit/{id}', 'CategoryController@categoryEdit')->name('category-edit');
+$this->post('categories/edit/{id}/store', 'CategoryController@editStore')->name('edit-store');
+
+//Rota para adicionar saldo da categoria
+$this->get('categories/deposit/{id}', 'CategoryController@categoryDeposit')->name('category-deposit');
+$this->post('categories/deposit/{id}/store', 'CategoryController@categoryDepositStore')->name('category-deposit-store');
+
+//Rota para sacar da categoria
+$this->get('categories/withdraw/{id}', 'CategoryController@categoryWithdraw')->name('category-withdraw');
+$this->post('categories/withdraw/{id}/store', 'CategoryController@categoryWithdrawStore')->name('category-withdraw-store');
+
+//Rota para excluir a categoria
+$this->get('categories/delete/{id}', 'CategoryController@categoryDelete')->name('category-delete');

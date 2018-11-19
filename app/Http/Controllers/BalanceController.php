@@ -12,11 +12,11 @@ class BalanceController extends Controller
     private function amount(){
       $balance = auth()->user()->balance;
 
-      return  $balance ? $balance->amount : 0;
+      return  $balance;
     }
 
     public function amountDetails(){
-      return view('site.saldo.amount-details')->with('amount', $this->amount());
+      return view('site.saldo.amount-details')->with('balance', $this->amount());
     }
 
     public function amountDeposit(){
@@ -40,7 +40,7 @@ class BalanceController extends Controller
     }
 
     public function amountWithdraw(){
-      return view('site.saldo.amount-withdraw')->with('amount', $this->amount());
+      return view('site.saldo.amount-withdraw')->with('balance', $this->amount());
     }
 
     public function withdrawStore(MoneyFormValidation $request){
@@ -48,6 +48,12 @@ class BalanceController extends Controller
         return redirect()
           ->back()
           ->with('error', 'Você não possui saldo suficiente para esse saque');
+      }
+
+      if($request->value > $this->amount()->avaiable_amount){
+        return redirect()
+          ->back()
+          ->with('error', 'Você precisa sacar de suas categorias para realizar este saque');
       }
 
       $balance = auth()->user()->balance()->firstOrCreate([]);

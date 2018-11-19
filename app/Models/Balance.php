@@ -7,6 +7,10 @@ use DB;
 
 class Balance extends Model
 {
+  protected $fillable = [
+    'user_id','avaiable_amount',
+  ];
+
     public function deposit($value){
       DB::beginTransaction();
 
@@ -16,6 +20,7 @@ class Balance extends Model
       //Atualiza o valor do saldo do usuário
       //$this->amount += number_format(intval($value), '2', ',', '');
       $this->amount += intval($value);
+      $this->avaiable_amount += intval($value);
 
       //Salva no banco de dados
       $deposit = $this->save();
