@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Me Poupe - Nova Categoria')
+@section('title', 'Me Poupe - Editar Categoria')
 
 @section('content_header')
   <h1>Editar Categoria</h1>
@@ -26,7 +26,7 @@
         </div>
         -->
         <button type="submit" class="btn btn-primary">Editar <i class="fa fa-edit"></i></button>
-        <a href="{{ route('category-delete', ['id' => auth()->id()]) }}" class="btn btn-danger">Excluir <i class="fa fa-trash"></i></a>
+        <a href="{{ route('category-delete', ['id' => $id]) }}" class="btn btn-danger">Excluir <i class="fa fa-trash"></i></a>
       </form>
     </div>
   </div>

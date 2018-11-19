@@ -120,7 +120,25 @@ class CategoryController extends Controller
         ->with('error', $response['message']);
     }
 
-    public function categoryDelete(Request $request, $id){
-      echo 'ainda não implementada';
+    public function categoryDelete($id){
+      $category = auth()->user()->categories()->where('id', $id)->first();
+
+      //dd($category);
+
+      return view('site.category.delete-category', compact('category', 'id'));
+    }
+
+    public function categoryDeleteStore(Category $categories, $id){
+      $response = $categories->deleteCategory($id);
+
+      if($response['success']){
+        return redirect()
+          ->to('categories')
+          ->with('success', $response['message']);
+      }
+
+      return redirect()
+        ->back()
+        ->with('error', $response['message']);
     }
 }

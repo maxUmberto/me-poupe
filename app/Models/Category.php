@@ -128,4 +128,30 @@ class Category extends Model
       ];
     }
   }
+
+  public function deleteCategory($id){
+    $category = auth()->user()->categories()->where('id',$id)->first();
+    $balance = auth()->user()->balance;
+
+    DB::beginTransaction();
+
+    $balance->avaiable_amount += intval($category->amount);
+
+    $balance = $balance->save();
+    $category = $category->forceDelete();
+
+    if($balance && $category){
+      DB::commit();
+      return [
+        'success' => true,
+        'message' => 'Categoria excluída com sucesso',
+      ];
+    }else{
+      DB::rollback();
+      return [
+        'success' => false,
+        'message' => 'Falha ao excluir a categoria, tente novamente'
+      ];
+    }
+  }
 }

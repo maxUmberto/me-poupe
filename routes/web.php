@@ -54,3 +54,4 @@ $this->post('categories/withdraw/{id}/store', 'CategoryController@categoryWithdr
 
 //Rota para excluir a categoria
 $this->get('categories/delete/{id}', 'CategoryController@categoryDelete')->name('category-delete');
+$this->get('categories/delete/{id}/store', 'CategoryController@categoryDeleteStore')->name('store-delete');
