@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Rotas de perfil
+$this->get('profile', 'UserController@index');
+$this->post('profile/edit/store', 'UserController@editProfile')->name('profile-edit');
+
 /* Rotas para ver detalhes do saldo */
 $this->get('amount', 'BalanceController@amountDetails')->name('amount-details');
 

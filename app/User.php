@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Balance;
 use App\Models\Historic;
+use DB;
 
 class User extends Authenticatable
 {
@@ -41,5 +42,28 @@ class User extends Authenticatable
 
     public function categories(){
       return $this->hasMany(Category::class);
+    }
+
+    public function editProfile($data){
+      $user = auth()->user();
+      DB::beginTransaction();
+
+      //$data = $data->all();
+
+      $update = $user->update($data->all());
+
+      if($update){
+        DB::commit();
+        return [
+          'success' => true,
+          'message' => 'Perfil atualizado com sucesso'
+        ];
+      }else{
+        DB::rollback();
+        return [
+          'success' => true,
+          'message' => 'Erro ao atualizar perfil'
+        ];
+      }
     }
 }

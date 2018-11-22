@@ -28,7 +28,13 @@
 
   <div class="box">
     <div class="box-header">
-      <h3>Categorias</h3>
+      <h3>Categorias
+      @if(count($categories) > 5)
+        <a href="/categories" class="btn btn-primary">Ver todas <i class="fa fa-plus"></i></a></h3>
+      @else
+        </h3>
+      @endif
+
     </div>
     <div class="box-body">
       @if(empty($categories[0]))

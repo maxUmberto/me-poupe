@@ -58,6 +58,7 @@ class Balance extends Model
       $totalBefore = $this->amount;
 
       $this->amount -= intval($value);
+      $this->avaiable_amount -= intval($value);
 
       $withdraw = $this->save();
 

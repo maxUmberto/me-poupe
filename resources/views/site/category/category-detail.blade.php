@@ -11,7 +11,7 @@
     <div class="box-header">
     @include('site.includes.app')
       <h3>{{ $category->name }}</h3>
-      @if($balance->amount > 0)
+      @if(isset($balance->amount) && $balance->amount > 0)
         <a href="{{ route('category-deposit', ['id' => $id]) }}" class="btn btn-success">Adicionar saldo <i class="fa fa-plus"></i></a>
       @endif
       @if($category->amount > 0)
