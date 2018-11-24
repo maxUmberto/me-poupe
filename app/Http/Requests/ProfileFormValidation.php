@@ -26,6 +26,7 @@ class ProfileFormValidation extends FormRequest
         return [
             'name' => 'required|regex:/^[a-zA-Z\s\áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇ]+$/',
             'email' => 'required|email',
+            'image' => 'file|image|mimes:jpg,png'
         ];
     }
 }

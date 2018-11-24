@@ -44,15 +44,15 @@ class User extends Authenticatable
       return $this->hasMany(Category::class);
     }
 
-    public function editProfile($data){
+    public function editProfile($data, $nameFile){
       $user = auth()->user();
       DB::beginTransaction();
 
-      //$data = $data->all();
-
+      $user->user_photo = $nameFile;
       $update = $user->update($data->all());
 
       if($update){
+      //if($update){
         DB::commit();
         return [
           'success' => true,

@@ -141,6 +141,11 @@ return [
           'numeric' => 'Somente números são aceitos',
           'min' => 'O valor do objetivo precisa ser maior que 0',
         ],
+        'image' => [
+          'file' => 'Só é aceito arquivos no campo de imagens',
+          'image' => 'O tipo de arquivo deve ser uma foto',
+          'mimes' => 'A imagem deve ser em formato PNG ou JPEG/JPG',
+        ],
     ],
 
     /*
