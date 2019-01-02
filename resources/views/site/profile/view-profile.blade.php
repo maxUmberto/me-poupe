@@ -24,9 +24,9 @@
           <input type="email" name="email" class="form-control" placeholder="Seu email" value="{{ $user->email }}">
         </div>
         <div class="form-group">
-          @if(auth()->user()->user_photo != null)
+          <!--@if(auth()->user()->user_photo != null)
             <img src="{{ url('storage/profile/'.auth()->user()->user_photo) }}" alt="{{ auth()->user()->name }}" style="max-width: 50px;">
-          @endif
+          @endif-->
           <label for="image">Imagem: </label>
           <input type="file" name="user_photo" class="form-control">
         </div>

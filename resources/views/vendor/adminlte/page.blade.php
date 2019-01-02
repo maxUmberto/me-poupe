@@ -91,6 +91,9 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
 
+
+                <img src="{{ url('storage/profile/'.auth()->user()->user_photo) }}" alt="{{ auth()->user()->name }}" class="img-responsive img-circle center-block" style="width:50%;margin-top:10px;margin-bottom:5px">
+
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     @each('adminlte::partials.menu-item', $adminlte->menu(), 'item')
